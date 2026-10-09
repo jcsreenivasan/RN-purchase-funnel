@@ -38,7 +38,7 @@ Landing → sqmil → sq3 → sq4 → sq5 (ZIP) → szload (4s loader) → sqema
    - Primary Residence · Second Home · Investment
 
 ### sq4 — (next funnel steps, unchanged from source)
-### sq5 — ZIP code entry
+### sq5 — ZIP code entry ("What is the ZIP code of the property you want to buy?")
 ### szload — 4-second ZIP loader (4 animated steps → sqemail)
 ### sqemail — Email capture
 - pane0: intro ("We found 32 rates for you.") → "I'm okay with that" → pane1
