@@ -1806,7 +1806,7 @@
     <div class="hero-banner-wrap fade-up">
       <div class="hero-banner-content">
         <div class="eyebrow">LIVE RATES · NO CREDIT PULL · NO OBLIGATION</div>
-        <h1>Compare Rates from Top VA IRRRL Lenders (below national average)</h1>
+        <h1>Compare Rates from Top VA Lenders (below national average)</h1>
         <p class="hero-banner-sub">Answer a few questions and receive personalized VA loan offers from top VA lenders, delivered instantly in one email.</p>
       </div>
     </div>
@@ -2250,7 +2250,9 @@
           <div class="hq-label"><span class="hq-num">01</span> What is your current service status?</div>
           <div class="hq-opts">
             <button class="hq-opt sel" onclick="hqPick(this)">Active Duty</button>
-            <button class="hq-opt" onclick="hqPick(this)">Separated</button>
+            <button class="hq-opt" onclick="hqPick(this)">Veteran</button>
+            <button class="hq-opt" onclick="hqPick(this)">National Guard / Reserve</button>
+            <button class="hq-opt" onclick="hqPick(this)">Surviving Spouse</button>
           </div>
         </div>
         <div class="hq-divider"></div>
@@ -2264,14 +2266,12 @@
         </div>
         <div class="hq-divider"></div>
         <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">03</span> What is your goal with this refinance?</div>
-          <p class="hq-hint">select all that apply</p>
+          <div class="hq-label"><span class="hq-num">03</span> Have you used your VA loan benefit before?</div>
           <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqMulti(this)">Lower my payment</button>
-            <button class="hq-opt" onclick="hqMulti(this)">Get cash out</button>
-            <button class="hq-opt" onclick="hqMulti(this)">Lower my rate</button>
-            <button class="hq-opt" onclick="hqMulti(this)">Lower my term</button>
-            <button class="hq-opt" onclick="hqMulti(this)">Skip mortgage insurance</button>
+            <button class="hq-opt sel" onclick="hqPick(this)">No, first time</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes, and I sold that home</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes, and I still own that home</button>
+            <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
           </div>
         </div>
       </div>
@@ -2286,40 +2286,40 @@
       <h2 class="sfinal-title">Please answer a few housing questions 🏠</h2>
       <div class="hq-list">
         <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">01</span> What is your current interest rate?</div>
+          <div class="hq-label"><span class="hq-num">01</span> Where are you in your home search?</div>
           <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqPick(this)">Below 3%</button>
-            <button class="hq-opt" onclick="hqPick(this)">3%–4%</button>
-            <button class="hq-opt" onclick="hqPick(this)">4%–5%</button>
-            <button class="hq-opt" onclick="hqPick(this)">5%–6%</button>
-            <button class="hq-opt" onclick="hqPick(this)">6%–7%</button>
-            <button class="hq-opt" onclick="hqPick(this)">Above 7%</button>
+            <button class="hq-opt sel" onclick="hqPick(this)">Just researching</button>
+            <button class="hq-opt" onclick="hqPick(this)">Looking at homes</button>
+            <button class="hq-opt" onclick="hqPick(this)">Making offers</button>
+            <button class="hq-opt" onclick="hqPick(this)">Under contract</button>
           </div>
         </div>
         <div class="hq-divider"></div>
         <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">02</span> What's the remaining balance on the mortgage?</div>
+          <div class="hq-label"><span class="hq-num">02</span> What is your estimated purchase price?</div>
           <div class="hq-slider-wrap">
-            <div class="hq-slider-val" id="sq3-bal-val">$200K</div>
-            <input type="range" min="0" max="1500000" step="10000" value="200000" oninput="document.getElementById('sq3-bal-val').textContent=fmtDollarK(this.value)">
-            <div class="hq-slider-labels"><span>$0</span><span>$750K</span><span>$1.5M</span></div>
+            <div class="hq-slider-val" id="sq3-price-val">$350K</div>
+            <input type="range" min="80000" max="5000000" step="10000" value="350000" oninput="document.getElementById('sq3-price-val').textContent=fmtDollarK(this.value)">
+            <div class="hq-slider-labels"><span>$80K</span><span>$2.5M</span><span>$5M</span></div>
           </div>
         </div>
         <div class="hq-divider"></div>
         <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">03</span> What is your estimated property value?</div>
+          <div class="hq-label"><span class="hq-num">03</span> How much do you plan to put down?</div>
           <div class="hq-slider-wrap">
-            <div class="hq-slider-val" id="sq3-pv-val">$350K</div>
-            <input type="range" min="80000" max="2000000" step="10000" value="350000" oninput="document.getElementById('sq3-pv-val').textContent=fmtDollarK(this.value)">
-            <div class="hq-slider-labels"><span>$80K</span><span>$1M</span><span>$2M</span></div>
+            <div class="hq-slider-val" id="sq3-down-val">$50K</div>
+            <input type="range" min="0" max="500000" step="5000" value="50000" oninput="document.getElementById('sq3-down-val').textContent=fmtDollarK(this.value)">
+            <div class="hq-slider-labels"><span>$0</span><span>$250K</span><span>$500K</span></div>
           </div>
         </div>
         <div class="hq-divider"></div>
         <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">04</span> Do you have a second mortgage?</div>
+          <div class="hq-label"><span class="hq-num">04</span> What type of property are you buying?</div>
           <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
-            <button class="hq-opt" onclick="hqPick(this)">Yes</button>
+            <button class="hq-opt sel" onclick="hqPick(this)">Single-family</button>
+            <button class="hq-opt" onclick="hqPick(this)">Condo</button>
+            <button class="hq-opt" onclick="hqPick(this)">Townhome</button>
+            <button class="hq-opt" onclick="hqPick(this)">Multi-unit (2–4 units)</button>
           </div>
         </div>
         <div class="hq-divider"></div>
