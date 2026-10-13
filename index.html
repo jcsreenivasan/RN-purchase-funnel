@@ -963,8 +963,9 @@
     #sotp .btn-continue:hover { background: #4238c0; }
     .ty-page { text-align: center; padding: 10px 0; }
     .ty-medal { margin-bottom: 20px; display: flex; justify-content: center; }
-    .ty-medal-badges { display: none; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px; }
-    .ty-medal-badges img { height: 52px; width: auto; object-fit: contain; }
+    .ty-medal-badges { display: none; justify-content: center; align-items: center; gap: 14px; margin-bottom: 20px; }
+    .ty-medal-badges img { height: 68px; width: auto; object-fit: contain; }
+    .ty-badge-divider { width: 1px; height: 48px; background: #d0d0e8; flex-shrink: 0; }
     .ty-lenders { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 28px; }
     .ty-lender-card { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 18px 14px 16px; background: rgba(255,255,255,0.95); border: 1px solid var(--lborder); border-radius: 18px; box-shadow: 0 4px 20px rgba(83,73,219,0.07); }
     .ty-rate-options { display: flex; flex-direction: column; gap: 6px; width: 100%; }
@@ -2897,7 +2898,9 @@
         <div class="ty-lenders" id="ty-lenders"></div>
         <div class="ty-medal-badges">
           <img src="badge-va-loans.png" alt="350K+ VA Loans Closed">
+          <div class="ty-badge-divider"></div>
           <img src="badge-5star.png" alt="200K+ 5-Star Reviews">
+          <div class="ty-badge-divider"></div>
           <img src="badge-veterans.png" alt="1000+ Veterans Helped">
         </div>
         <div class="ty-checklist">
