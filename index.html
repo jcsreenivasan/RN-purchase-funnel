@@ -489,8 +489,9 @@
     .sqcontact-input:focus { border-color: var(--primary); box-shadow: 0 0 0 3px rgba(83,73,219,0.12); }
     .sqcontact-cta { display: block; width: 100%; padding: 17px 24px; background: var(--primary); color: #fff; border: none; border-radius: 12px; font-size: 17px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; margin-bottom: 22px; transition: background 0.15s, box-shadow 0.15s; box-shadow: 0 4px 18px rgba(83,73,219,0.28); }
     .sqcontact-cta:hover { background: #4239c4; box-shadow: 0 6px 24px rgba(83,73,219,0.36); }
-    .sqcontact-badges { display: flex; align-items: center; justify-content: center; gap: 10px; margin-top: 4px; padding-top: 16px; border-top: 1px solid #e9ecef; }
-    .sqcontact-badges img { height: 52px; width: auto; }
+    .sqcontact-badges { display: flex; align-items: center; justify-content: center; gap: 14px; margin-top: 4px; padding-top: 16px; border-top: 1px solid #e9ecef; }
+    .sqcontact-badges img { height: 68px; width: auto; }
+    .sqcontact-badge-divider { width: 1px; height: 48px; background: #d0d0e8; flex-shrink: 0; }
 
     /* ─── SMATCH STEP ─── */
     .smatch-title { font-size: 28px; font-weight: 800; color: var(--ink); text-align: center; margin-bottom: 8px; letter-spacing: -0.5px; line-height: 1.2; }
@@ -2450,7 +2451,9 @@
         <button class="sqcontact-cta" onclick="sqcontactSubmit()">Review these offers</button>
         <div class="sqcontact-badges">
           <img src="badge-va-loans.png" alt="15K+ VA Loans Closed">
+          <div class="sqcontact-badge-divider"></div>
           <img src="badge-5star.png" alt="90K+ 5-Star Reviews">
+          <div class="sqcontact-badge-divider"></div>
           <img src="badge-veterans.png" alt="25K+ Veterans Helped">
         </div>
       </div>
