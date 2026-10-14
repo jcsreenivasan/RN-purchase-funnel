@@ -2558,6 +2558,162 @@
       </div>
     </div>
 
+    <!-- ─── REFI STEPS ─── -->
+
+    <!-- ─── STEP SQMIL-R: REFI MILITARY QUESTIONS ─── -->
+    <div class="step-card step-card-wide hidden" id="sqmil-r">
+      <h2 class="sfinal-title">🪖 Military Questions</h2>
+      <div class="hq-list">
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">01</span> What is your current service status?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">Active Duty</button>
+            <button class="hq-opt" onclick="hqPick(this)">Separated</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">02</span> Is your service-connected disability rating above 10%?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes</button>
+            <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">03</span> What is your goal with this refinance?</div>
+          <p class="hq-hint">select all that apply</p>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqMulti(this)">Lower my payment</button>
+            <button class="hq-opt" onclick="hqMulti(this)">Get cash out</button>
+            <button class="hq-opt" onclick="hqMulti(this)">Lower my rate</button>
+            <button class="hq-opt" onclick="hqMulti(this)">Lower my term</button>
+            <button class="hq-opt" onclick="hqMulti(this)">Skip mortgage insurance</button>
+          </div>
+        </div>
+      </div>
+      <div class="sfinal-actions" style="padding-top:24px;">
+        <button class="sfinal-back-btn" onclick="go('sqmil')">Back</button>
+        <button class="sfinal-submit-btn" onclick="go('sq3-r')">Continue</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP SQ3-R: REFI HOUSING QUESTIONS ─── -->
+    <div class="step-card step-card-wide hidden" id="sq3-r">
+      <h2 class="sfinal-title">Please answer a few housing questions 🏠</h2>
+      <div class="hq-list">
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">01</span> What is your current interest rate?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">Below 3%</button>
+            <button class="hq-opt" onclick="hqPick(this)">3%–4%</button>
+            <button class="hq-opt" onclick="hqPick(this)">4%–5%</button>
+            <button class="hq-opt" onclick="hqPick(this)">5%–6%</button>
+            <button class="hq-opt" onclick="hqPick(this)">6%–7%</button>
+            <button class="hq-opt" onclick="hqPick(this)">Above 7%</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">02</span> What's the remaining balance on the mortgage?</div>
+          <div class="hq-slider-wrap">
+            <div class="hq-slider-val" id="sqr3-bal-val">$200K</div>
+            <input type="range" min="0" max="1500000" step="10000" value="200000" oninput="document.getElementById('sqr3-bal-val').textContent=fmtDollarK(this.value)">
+            <div class="hq-slider-labels"><span>$0</span><span>$750K</span><span>$1.5M</span></div>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">03</span> What is your estimated property value?</div>
+          <div class="hq-slider-wrap">
+            <div class="hq-slider-val" id="sqr3-pv-val">$350K</div>
+            <input type="range" min="80000" max="2000000" step="10000" value="350000" oninput="document.getElementById('sqr3-pv-val').textContent=fmtDollarK(this.value)">
+            <div class="hq-slider-labels"><span>$80K</span><span>$1M</span><span>$2M</span></div>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">04</span> Do you have a second mortgage?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">05</span> How will this property be used?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">Primary Residence</button>
+            <button class="hq-opt" onclick="hqPick(this)">Second Home</button>
+            <button class="hq-opt" onclick="hqPick(this)">Investment</button>
+          </div>
+        </div>
+      </div>
+      <div class="sfinal-actions" style="padding-top:24px;">
+        <button class="sfinal-back-btn" onclick="go('sqmil-r')">Back</button>
+        <button class="sfinal-submit-btn" onclick="go('sq4-r')">Continue</button>
+      </div>
+    </div>
+
+    <!-- ─── STEP SQ4-R: REFI FINANCIAL QUESTIONS ─── -->
+    <div class="step-card step-card-wide hidden" id="sq4-r">
+      <h2 class="sfinal-title">Financial questions</h2>
+      <div class="hq-list">
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">01</span> What's your estimated credit score?</div>
+          <div class="hq-slider-wrap">
+            <div class="hq-slider-val" id="sqr4-cs-val">720 — Good</div>
+            <input type="range" min="560" max="850" step="5" value="720" oninput="updateCreditDisplayR(this.value)">
+            <div class="hq-slider-labels"><span>560</span><span>705</span><span>850</span></div>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">02</span> What's your employment status?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">Employed</button>
+            <button class="hq-opt" onclick="hqPick(this)">Self-Employed</button>
+            <button class="hq-opt" onclick="hqPick(this)">Retired</button>
+            <button class="hq-opt" onclick="hqPick(this)">Military</button>
+            <button class="hq-opt" onclick="hqPick(this)">Other</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">03</span> What is the gross annual income of the borrower(s)?</div>
+          <div class="hq-slider-wrap">
+            <div class="hq-slider-val" id="sqr4-inc-val">$80K</div>
+            <input type="range" min="0" max="500000" step="5000" value="80000" oninput="document.getElementById('sqr4-inc-val').textContent=fmtDollarK(this.value)">
+            <div class="hq-slider-labels"><span>$0</span><span>$250K</span><span>$500K</span></div>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">04</span> Any 30-day late mortgage payments in the last 12 months?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes – 1 time</button>
+            <button class="hq-opt" onclick="hqPick(this)">Yes – 2+</button>
+          </div>
+        </div>
+        <div class="hq-divider"></div>
+        <div class="hq-item">
+          <div class="hq-label"><span class="hq-num">05</span> Bankruptcy or foreclosure in the last four years?</div>
+          <div class="hq-opts">
+            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
+            <button class="hq-opt" onclick="hqPick(this)">Bankruptcy</button>
+            <button class="hq-opt" onclick="hqPick(this)">Foreclosure</button>
+            <button class="hq-opt" onclick="hqPick(this)">Both</button>
+          </div>
+        </div>
+      </div>
+      <div class="sfinal-actions" style="padding-top:24px;">
+        <button class="sfinal-back-btn" onclick="go('sq3-r')">Back</button>
+        <button class="sfinal-submit-btn" onclick="go('sq5')">Continue</button>
+      </div>
+    </div>
+
     <!-- ─── STEP SQ5: PROPERTY LOCATION ─── -->
     <div class="step-card step-card-wide hidden" id="sq5">
       <p class="sq5-heading">What is the ZIP code of the property you want to buy?</p>
@@ -2999,7 +3155,7 @@
 <script>
   let curStep = 1;
   let propertyType = '';
-  const progress = { 'sqmil':10, 'sq3':20, 'sq4':38, 'sq5':55, 'szload':75, 'sqemail':95, 'sqcontact':99, 'sload':85, 'smatch':92, 'sotp':97, 15:100 };
+  const progress = { 'sqmil':10, 'sq3':20, 'sq4':38, 'sqmil-r':10, 'sq3-r':20, 'sq4-r':38, 'sq5':55, 'szload':75, 'sqemail':95, 'sqcontact':99, 'sload':85, 'smatch':92, 'sotp':97, 15:100 };
   const progressLabel = { 'sqemail': '95% complete · Almost there', 'sqcontact': '99% complete · Final step' };
 
   function personalizeFunnel() {
@@ -3083,6 +3239,11 @@
     v = +v;
     var rating = v >= 800 ? 'Exceptional' : v >= 740 ? 'Very Good' : v >= 670 ? 'Good' : v >= 580 ? 'Fair' : 'Poor';
     document.getElementById('sq4-cs-val').textContent = v + ' \u2014 ' + rating;
+  }
+  function updateCreditDisplayR(v) {
+    v = +v;
+    var rating = v >= 800 ? 'Exceptional' : v >= 740 ? 'Very Good' : v >= 670 ? 'Good' : v >= 580 ? 'Fair' : 'Poor';
+    document.getElementById('sqr4-cs-val').textContent = v + ' \u2014 ' + rating;
   }
 
   function selectPropertyType(el, type) {
@@ -3179,8 +3340,12 @@
   function sqmilOverlayPick(type) {
     var ov = document.getElementById('sqmil-overlay');
     var bd = document.getElementById('sqmil-body');
-    if (ov) ov.style.display = 'none';
-    if (bd) bd.classList.remove('dimmed');
+    if (type === 'purchase') {
+      if (ov) ov.style.display = 'none';
+      if (bd) bd.classList.remove('dimmed');
+    } else {
+      go('sqmil-r');
+    }
   }
 
   function sqemailIntroContinue() {
