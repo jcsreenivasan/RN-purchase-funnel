@@ -267,6 +267,25 @@
     .hq-list { display: flex; flex-direction: column; }
     .hq-item { padding: 26px 0 22px; }
     .hq-divider { height: 1px; background: #ebebf5; }
+    /* ── SQMIL INTENT OVERLAY ── */
+    #sqmil { position: relative; overflow: hidden; }
+    .sqmil-body { transition: opacity 0.25s; }
+    .sqmil-body.dimmed { opacity: 0.12; pointer-events: none; user-select: none; }
+    .sqmil-overlay {
+      position: absolute; inset: 0; z-index: 10;
+      background: rgba(255,255,255,0.94);
+      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      padding: 36px 32px; text-align: center; border-radius: 20px;
+    }
+    .sqmil-ov-emoji { font-size: 40px; margin-bottom: 16px; line-height: 1; }
+    .sqmil-ov-title { font-size: 20px; font-weight: 800; color: var(--ink); line-height: 1.4; margin-bottom: 28px; max-width: 340px; }
+    .sqmil-ov-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+    .sqmil-ov-btn { padding: 16px 24px; border-radius: 12px; font-size: 16px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; border: 2px solid var(--primary); transition: all 0.15s; }
+    .sqmil-ov-btn.fill { background: var(--primary); color: #fff; }
+    .sqmil-ov-btn.fill:hover { background: #4238c0; }
+    .sqmil-ov-btn.outline { background: #fff; color: var(--primary); }
+    .sqmil-ov-btn.outline:hover { background: #f0eeff; }
     .hq-slider-wrap { margin-top: 10px; }
     .hq-slider-val { font-size: 13px; font-weight: 800; color: var(--primary); letter-spacing: -0.2px; margin-bottom: 8px; line-height: 1; }
     .hq-slider-labels { display: flex; justify-content: space-between; font-size: 11px; color: var(--slate); margin-top: 4px; font-weight: 600; }
@@ -2125,40 +2144,52 @@
 
     <!-- ─── STEP SQMIL: MILITARY QUESTIONS ─── -->
     <div class="step-card step-card-wide hidden" id="sqmil">
-      <h2 class="sfinal-title">🪖 Military Questions</h2>
-      <div class="hq-list">
-        <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">01</span> What is your current service status?</div>
-          <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqPick(this)">Active Duty</button>
-            <button class="hq-opt" onclick="hqPick(this)">Veteran</button>
-            <button class="hq-opt" onclick="hqPick(this)">National Guard / Reserve</button>
-            <button class="hq-opt" onclick="hqPick(this)">Surviving Spouse</button>
-          </div>
-        </div>
-        <div class="hq-divider"></div>
-        <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">02</span> Is your service-connected disability rating above 10%?</div>
-          <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqPick(this)">No</button>
-            <button class="hq-opt" onclick="hqPick(this)">Yes</button>
-            <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
-          </div>
-        </div>
-        <div class="hq-divider"></div>
-        <div class="hq-item">
-          <div class="hq-label"><span class="hq-num">03</span> Have you used your VA loan benefit before?</div>
-          <div class="hq-opts">
-            <button class="hq-opt sel" onclick="hqPick(this)">No, first time</button>
-            <button class="hq-opt" onclick="hqPick(this)">Yes, and I sold that home</button>
-            <button class="hq-opt" onclick="hqPick(this)">Yes, and I still own that home</button>
-            <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
-          </div>
+      <!-- Intent overlay -->
+      <div class="sqmil-overlay" id="sqmil-overlay">
+        <div class="sqmil-ov-emoji">🎖️</div>
+        <div class="sqmil-ov-title">Thank you for your service!<br>To help refine your rate match,<br>what are you most interested in?</div>
+        <div class="sqmil-ov-btns">
+          <button class="sqmil-ov-btn fill" onclick="sqmilOverlayPick('purchase')">VA Purchase</button>
+          <button class="sqmil-ov-btn outline" onclick="sqmilOverlayPick('refinance')">VA Refinance</button>
         </div>
       </div>
-      <div class="sfinal-actions" style="padding-top:24px;">
-        <button class="sfinal-back-btn" onclick="exitFunnel()">Back</button>
-        <button class="sfinal-submit-btn" onclick="go('sq3')">Continue</button>
+      <!-- Background content -->
+      <div class="sqmil-body dimmed" id="sqmil-body">
+        <h2 class="sfinal-title">🪖 Military Questions</h2>
+        <div class="hq-list">
+          <div class="hq-item">
+            <div class="hq-label"><span class="hq-num">01</span> What is your current service status?</div>
+            <div class="hq-opts">
+              <button class="hq-opt sel" onclick="hqPick(this)">Active Duty</button>
+              <button class="hq-opt" onclick="hqPick(this)">Veteran</button>
+              <button class="hq-opt" onclick="hqPick(this)">National Guard / Reserve</button>
+              <button class="hq-opt" onclick="hqPick(this)">Surviving Spouse</button>
+            </div>
+          </div>
+          <div class="hq-divider"></div>
+          <div class="hq-item">
+            <div class="hq-label"><span class="hq-num">02</span> Is your service-connected disability rating above 10%?</div>
+            <div class="hq-opts">
+              <button class="hq-opt sel" onclick="hqPick(this)">No</button>
+              <button class="hq-opt" onclick="hqPick(this)">Yes</button>
+              <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
+            </div>
+          </div>
+          <div class="hq-divider"></div>
+          <div class="hq-item">
+            <div class="hq-label"><span class="hq-num">03</span> Have you used your VA loan benefit before?</div>
+            <div class="hq-opts">
+              <button class="hq-opt sel" onclick="hqPick(this)">No, first time</button>
+              <button class="hq-opt" onclick="hqPick(this)">Yes, and I sold that home</button>
+              <button class="hq-opt" onclick="hqPick(this)">Yes, and I still own that home</button>
+              <button class="hq-opt" onclick="hqPick(this)">Not sure</button>
+            </div>
+          </div>
+        </div>
+        <div class="sfinal-actions" style="padding-top:24px;">
+          <button class="sfinal-back-btn" onclick="exitFunnel()">Back</button>
+          <button class="sfinal-submit-btn" onclick="go('sq3')">Continue</button>
+        </div>
       </div>
     </div>
 
@@ -3126,7 +3157,20 @@
       if (p1) p1.style.display = 'none';
       if (p2) p2.style.display = 'none';
     }
+    if (step === 'sqmil') {
+      var ov = document.getElementById('sqmil-overlay');
+      var bd = document.getElementById('sqmil-body');
+      if (ov) ov.style.display = 'flex';
+      if (bd) bd.classList.add('dimmed');
+    }
     window.scrollTo({ top:0, behavior:'smooth' });
+  }
+
+  function sqmilOverlayPick(type) {
+    var ov = document.getElementById('sqmil-overlay');
+    var bd = document.getElementById('sqmil-body');
+    if (ov) ov.style.display = 'none';
+    if (bd) bd.classList.remove('dimmed');
   }
 
   function sqemailIntroContinue() {
