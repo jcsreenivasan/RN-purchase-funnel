@@ -268,19 +268,27 @@
     .hq-item { padding: 26px 0 22px; }
     .hq-divider { height: 1px; background: #ebebf5; }
     /* ── SQMIL INTENT OVERLAY ── */
-    #sqmil { position: relative; overflow: hidden; }
+    #sqmil { position: relative; }
     .sqmil-body { transition: opacity 0.25s; }
-    .sqmil-body.dimmed { opacity: 0.12; pointer-events: none; user-select: none; }
+    .sqmil-body.dimmed { opacity: 0.38; pointer-events: none; user-select: none; }
     .sqmil-overlay {
       position: absolute; inset: 0; z-index: 10;
-      background: rgba(255,255,255,0.94);
-      backdrop-filter: blur(4px); -webkit-backdrop-filter: blur(4px);
+      background: rgba(235,233,255,0.55);
       display: flex; flex-direction: column; align-items: center; justify-content: center;
-      padding: 36px 32px; text-align: center; border-radius: 20px;
+      padding: 24px 20px; border-radius: 20px;
+    }
+    .sqmil-ov-card {
+      background: #fff;
+      border-radius: 20px;
+      box-shadow: 0 16px 56px rgba(83,73,219,0.22), 0 4px 18px rgba(0,0,0,0.09);
+      padding: 36px 32px;
+      text-align: center;
+      width: 100%;
+      max-width: 380px;
     }
     .sqmil-ov-emoji { font-size: 40px; margin-bottom: 16px; line-height: 1; }
-    .sqmil-ov-title { font-size: 20px; font-weight: 800; color: var(--ink); line-height: 1.4; margin-bottom: 28px; max-width: 340px; }
-    .sqmil-ov-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; max-width: 300px; }
+    .sqmil-ov-title { font-size: 20px; font-weight: 800; color: var(--ink); line-height: 1.4; margin-bottom: 28px; }
+    .sqmil-ov-btns { display: flex; flex-direction: column; gap: 12px; width: 100%; }
     .sqmil-ov-btn { padding: 16px 24px; border-radius: 12px; font-size: 16px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; border: 2px solid var(--primary); transition: all 0.15s; }
     .sqmil-ov-btn.fill { background: var(--primary); color: #fff; }
     .sqmil-ov-btn.fill:hover { background: #4238c0; }
@@ -2146,11 +2154,13 @@
     <div class="step-card step-card-wide hidden" id="sqmil">
       <!-- Intent overlay -->
       <div class="sqmil-overlay" id="sqmil-overlay">
-        <div class="sqmil-ov-emoji">🎖️</div>
-        <div class="sqmil-ov-title">Thank you for your service!<br>To help refine your rate match,<br>what are you most interested in?</div>
-        <div class="sqmil-ov-btns">
-          <button class="sqmil-ov-btn fill" onclick="sqmilOverlayPick('purchase')">VA Purchase</button>
-          <button class="sqmil-ov-btn outline" onclick="sqmilOverlayPick('refinance')">VA Refinance</button>
+        <div class="sqmil-ov-card">
+          <div class="sqmil-ov-emoji">🎖️</div>
+          <div class="sqmil-ov-title">Thank you for your service!<br>To help refine your rate match,<br>what are you most interested in?</div>
+          <div class="sqmil-ov-btns">
+            <button class="sqmil-ov-btn fill" onclick="sqmilOverlayPick('purchase')">VA Purchase</button>
+            <button class="sqmil-ov-btn outline" onclick="sqmilOverlayPick('refinance')">VA Refinance</button>
+          </div>
         </div>
       </div>
       <!-- Background content -->
