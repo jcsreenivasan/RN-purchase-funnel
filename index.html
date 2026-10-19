@@ -1006,6 +1006,10 @@
     .ty-lender-logo { display: flex; align-items: center; justify-content: center; min-height: 60px; width: 100%; margin-top: 14px; }
     .ty-lender-logo img { max-width: 160px; max-height: 60px; object-fit: contain; display: block; }
     .ty-lender-name { font-size: 14px; font-weight: 700; color: var(--text); text-align: center; line-height: 1.3; }
+    .ty-review-block { display: flex; flex-direction: column; align-items: center; gap: 4px; padding: 10px 0 4px; width: 100%; }
+    .ty-review-stars { color: #f5a623; font-size: 18px; letter-spacing: 1px; line-height: 1; }
+    .ty-review-rating { font-size: 20px; font-weight: 800; color: #0f0c28; line-height: 1.1; }
+    .ty-review-count { font-size: 12px; color: #6b6f8a; font-weight: 500; }
     .ty-placeholder-card {
       display: flex; flex-direction: column; align-items: center; justify-content: center;
       text-align: center; gap: 10px; padding: 20px 14px;
@@ -3064,25 +3068,29 @@
       <div class="lender-card sel"
         data-rate1="5.750%" data-apr1="5.821%" data-pts1="0.500"
         data-rate2="5.875%" data-apr2="5.942%" data-pts2="0.750"
-        data-rate3="6.000%" data-apr3="6.064%" data-pts3="1.000">
+        data-rate3="6.000%" data-apr3="6.064%" data-pts3="1.000"
+        data-rating="4.9" data-reviews="103,220">
         <div class="lender-badge"><img src="veterans-united-logo.png" alt="Veterans United"></div>
       </div>
       <div class="lender-card sel"
         data-rate1="5.875%" data-apr1="5.940%" data-pts1="0.250"
         data-rate2="6.000%" data-apr2="6.058%" data-pts2="0.125"
-        data-rate3="6.125%" data-apr3="6.181%" data-pts3="0.375">
+        data-rate3="6.125%" data-apr3="6.181%" data-pts3="0.375"
+        data-rating="4.8" data-reviews="198,540">
         <div class="lender-badge"><img src="rocket-logo.png" alt="Rocket Mortgage"></div>
       </div>
       <div class="lender-card sel"
         data-rate1="6.000%" data-apr1="6.052%" data-pts1="0.500"
         data-rate2="6.125%" data-apr2="6.178%" data-pts2="0.250"
-        data-rate3="6.250%" data-apr3="6.301%" data-pts3="0.125">
+        data-rate3="6.250%" data-apr3="6.301%" data-pts3="0.125"
+        data-rating="4.7" data-reviews="52,180">
         <div class="lender-badge"><img src="better-mortgage-logo.svg" alt="Better"></div>
       </div>
       <div class="lender-card sel"
         data-rate1="6.050%" data-apr1="6.118%" data-pts1="0.375"
         data-rate2="6.250%" data-apr2="6.312%" data-pts2="0.500"
-        data-rate3="6.375%" data-apr3="6.438%" data-pts3="0.625">
+        data-rate3="6.375%" data-apr3="6.438%" data-pts3="0.625"
+        data-rating="4.9" data-reviews="8,940">
         <div class="lender-badge"><img src="strong-home-mortgage-logo.webp" alt="Strong Home Mortgage"></div>
       </div>
     </div>
@@ -3156,6 +3164,7 @@
 <script>
   let curStep = 1;
   let propertyType = '';
+  let funnelType = 'purchase';
   const progress = { 'sqmil':10, 'sq3':20, 'sq4':38, 'sqmil-r':10, 'sq3-r':20, 'sq4-r':38, 'sq5':55, 'szload':75, 'sqemail':95, 'sqcontact':99, 'sload':85, 'smatch':92, 'sotp':97, 15:100 };
   const progressLabel = { 'sqemail': '95% complete · Almost there', 'sqcontact': '99% complete · Final step' };
 
@@ -3342,9 +3351,11 @@
     var ov = document.getElementById('sqmil-overlay');
     var bd = document.getElementById('sqmil-body');
     if (type === 'purchase') {
+      funnelType = 'purchase';
       if (ov) ov.style.display = 'none';
       if (bd) bd.classList.remove('dimmed');
     } else {
+      funnelType = 'refinance';
       go('sqmil-r');
     }
   }
@@ -3597,6 +3608,7 @@
       `<svg width="17" height="17" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v5c0 4.95 3.41 9.57 8 10.93C17.59 20.57 21 15.95 21 11V6l-9-4z" fill="#16a25b" opacity="0.18"/><path d="M12 2L4 6v5c0 4.95 3.41 9.57 8 10.93C17.59 20.57 21 15.95 21 11V6l-9-4z" stroke="#16a25b" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#16a25b" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>` +
       `<span>5,200+ veterans use VArates.now to compare VA rates</span>` +
       `</div></div>`;
+    const isRefi = (funnelType === 'refinance');
     const cards = selected.map(card => {
       const badge = card.querySelector('.lender-badge');
       const img = badge ? badge.querySelector('img') : null;
@@ -3606,6 +3618,12 @@
       } else {
         const name = badge ? badge.textContent.trim() : '';
         logoHtml = `<div class="ty-lender-logo"><span class="ty-lender-name">${name}</span></div>`;
+      }
+      if (isRefi) {
+        const rating = card.dataset.rating || '4.9';
+        const reviews = card.dataset.reviews || '10,000+';
+        const reviewHtml = `<div class="ty-review-block"><div class="ty-review-stars">★★★★★</div><div class="ty-review-rating">${rating}</div><div class="ty-review-count">${reviews} reviews</div></div>`;
+        return `<div class="ty-lender-card"><div class="ty-nmls-tag">NMLS# 1234567</div>${logoHtml}${reviewHtml}</div>`;
       }
       const opts = [
         { rate: card.dataset.rate1||'—', apr: card.dataset.apr1||'—', pts: card.dataset.pts1||'—', shade: 'shade-1' },
