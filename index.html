@@ -505,6 +505,17 @@
     .sqemail-intro-cta { display: block; width: 100%; padding: 17px 24px; background: var(--primary); color: #fff; border: none; border-radius: 12px; font-size: 17px; font-weight: 700; font-family: 'Inter', sans-serif; cursor: pointer; transition: background 0.15s, box-shadow 0.15s; box-shadow: 0 4px 18px rgba(83,73,219,0.28); }
     .sqemail-intro-cta:hover { background: #4239c4; box-shadow: 0 6px 24px rgba(83,73,219,0.36); }
 
+    /* ─── SWEEPSTAKES CARD ─── */
+    .sqemail-sweep-outer { position: relative; padding-top: 42px; margin-bottom: 20px; }
+    .sqemail-sweep-amz-wrap { position: absolute; top: 0; left: 50%; transform: translateX(-50%); z-index: 2; }
+    .sqemail-sweep-amz { width: 80px; height: 54px; background: #111; border-radius: 11px; display: flex; flex-direction: column; align-items: center; justify-content: center; position: relative; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.35); }
+    .sqemail-sweep-amz-amount { position: absolute; top: 5px; right: 7px; font-size: 9px; font-weight: 700; color: #fff; letter-spacing: 0.3px; font-family: 'Inter', sans-serif; }
+    .sqemail-sweep-amz-a { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; font-family: 'Times New Roman', serif; margin-top: -2px; }
+    .sqemail-sweep-amz-smile { width: 38px; height: 10px; margin-top: 2px; flex-shrink: 0; }
+    .sqemail-sweep-card { background: #f4f4f9; border: 1px solid #e0e0ee; border-radius: 18px; padding: 28px 20px 20px; text-align: center; }
+    .sqemail-sweep-title { font-size: 20px; font-weight: 800; color: #0f0c28; margin-bottom: 10px; }
+    .sqemail-sweep-sub { font-size: 13px; color: #6b6f8a; line-height: 1.6; margin: 0; }
+
     /* ─── SQCONTACT STEP ─── */
     .sqcontact-wrap { max-width: 520px; margin: 0 auto; padding: 8px 0 4px; }
     .sqcontact-title { font-size: 32px; font-weight: 800; color: var(--ink); line-height: 1.2; margin-bottom: 10px; letter-spacing: -0.6px; text-align: center; }
@@ -2309,6 +2320,23 @@
           <div class="sqemail-v2-protected">
             <svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M12 2L4 6v5c0 4.95 3.41 9.57 8 10.93C17.59 20.57 21 15.95 21 11V6l-9-4z" fill="#16a25b" opacity="0.15" stroke="#16a25b" stroke-width="1.5"/><path d="M9 12l2 2 4-4" stroke="#16a25b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
             Your info is protected.
+          </div>
+          <!-- Amazon sweepstakes card -->
+          <div class="sqemail-sweep-outer">
+            <div class="sqemail-sweep-amz-wrap">
+              <div class="sqemail-sweep-amz">
+                <span class="sqemail-sweep-amz-amount">$250</span>
+                <span class="sqemail-sweep-amz-a">a</span>
+                <svg class="sqemail-sweep-amz-smile" viewBox="0 0 48 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M2 3 Q24 13 44 4" stroke="#FF9900" stroke-width="2.4" stroke-linecap="round" fill="none"/>
+                  <path d="M42 2 L46 5 L41 7" stroke="#FF9900" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                </svg>
+              </div>
+            </div>
+            <div class="sqemail-sweep-card">
+              <div class="sqemail-sweep-title">$250 gift card</div>
+              <p class="sqemail-sweep-sub">Submitting this step doesn't require you to select a lender or accept an offer.</p>
+            </div>
           </div>
           <!-- Email input -->
           <div class="sqemail-v2-field">
