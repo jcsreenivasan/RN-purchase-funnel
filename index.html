@@ -512,10 +512,18 @@
     .sqemail-sweep-amz-amount { position: absolute; top: 5px; right: 7px; font-size: 9px; font-weight: 700; color: #fff; letter-spacing: 0.3px; font-family: 'Inter', sans-serif; }
     .sqemail-sweep-amz-a { font-size: 28px; font-weight: 900; color: #fff; line-height: 1; font-family: 'Times New Roman', serif; margin-top: -2px; }
     .sqemail-sweep-amz-smile { width: 38px; height: 10px; margin-top: 2px; flex-shrink: 0; }
-    .sqemail-sweep-card { background: linear-gradient(150deg, #1a5c35 0%, #0d3d20 100%); border: 1.5px solid #2e7d4a; border-radius: 18px; padding: 28px 20px 20px; text-align: center; box-shadow: 0 8px 28px rgba(13,61,32,0.4); }
+    .sqemail-sweep-card { background: linear-gradient(150deg, #1a5c35 0%, #0d3d20 100%); border: 1.5px solid #2e7d4a; border-radius: 18px; padding: 28px 20px 20px; text-align: center; box-shadow: 0 8px 28px rgba(13,61,32,0.4); position: relative; overflow: hidden; }
+    .sqemail-sweep-content { position: relative; z-index: 1; }
     .sqemail-sweep-deco { font-size: 14px; color: #f5c842; letter-spacing: 6px; margin-bottom: 8px; }
     .sqemail-sweep-title { font-size: 20px; font-weight: 800; color: #f5c842; margin-bottom: 10px; text-shadow: 0 1px 6px rgba(0,0,0,0.25); }
     .sqemail-sweep-sub { font-size: 12px; color: rgba(255,255,255,0.85); line-height: 1.6; margin: 0; }
+    @keyframes sweepSnow {
+      0%   { transform: translateY(-10px) translateX(0px) rotate(0deg); opacity: 0; }
+      8%   { opacity: 0.8; }
+      85%  { opacity: 0.5; }
+      100% { transform: translateY(180px) translateX(var(--drift)) rotate(var(--rot)); opacity: 0; }
+    }
+    .sweep-flake { position: absolute; top: 0; left: var(--x); font-size: var(--sz); color: rgba(255,255,255,0.75); animation: sweepSnow var(--dur) linear var(--del) infinite; pointer-events: none; user-select: none; z-index: 0; }
 
     /* ─── SQCONTACT STEP ─── */
     .sqcontact-wrap { max-width: 520px; margin: 0 auto; padding: 8px 0 4px; }
@@ -2334,11 +2342,13 @@
                 </svg>
               </div>
             </div>
-            <div class="sqemail-sweep-card">
-              <div class="sqemail-sweep-deco">❄ ✦ ❄</div>
-              <div class="sqemail-sweep-title">Don't Miss This Month's $250 Holiday Giveaway!</div>
-              <p class="sqemail-sweep-sub">Submitting your contact information doesn't require<br>you to select a lender or accept an offer.</p>
-              <a href="#" style="display:inline-block;margin-top:10px;font-size:12px;color:rgba(255,255,255,0.65);font-weight:600;text-decoration:underline;font-family:'Inter',sans-serif;">Offer details</a>
+            <div class="sqemail-sweep-card" id="sqemail-sweep-card">
+              <div class="sqemail-sweep-content">
+                <div class="sqemail-sweep-deco">❄ ✦ ❄</div>
+                <div class="sqemail-sweep-title">Don't Miss This Month's $250 Holiday Giveaway!</div>
+                <p class="sqemail-sweep-sub">Submitting your contact information doesn't require<br>you to select a lender or accept an offer.</p>
+                <a href="#" style="display:inline-block;margin-top:10px;font-size:12px;color:rgba(255,255,255,0.65);font-weight:600;text-decoration:underline;font-family:'Inter',sans-serif;">Offer details</a>
+              </div>
             </div>
           </div>
           <!-- Email input -->
@@ -3794,6 +3804,25 @@
       });
     });
     window.closeRaPopup = closeRaPopup;
+  })();
+
+  (function initSweepSnow() {
+    var card = document.getElementById('sqemail-sweep-card');
+    if (!card) return;
+    var glyphs = ['❄','❅','❆','·','•','*'];
+    var count = 14;
+    for (var i = 0; i < count; i++) {
+      var f = document.createElement('span');
+      f.className = 'sweep-flake';
+      f.textContent = glyphs[Math.floor(Math.random() * glyphs.length)];
+      f.style.setProperty('--x',     (Math.random() * 92 + 4) + '%');
+      f.style.setProperty('--sz',    (Math.random() * 7 + 7) + 'px');
+      f.style.setProperty('--dur',   (Math.random() * 3 + 2.5) + 's');
+      f.style.setProperty('--del',   '-' + (Math.random() * 6) + 's');
+      f.style.setProperty('--drift', (Math.random() * 28 - 14) + 'px');
+      f.style.setProperty('--rot',   (Math.random() * 360) + 'deg');
+      card.appendChild(f);
+    }
   })();
 </script>
 
